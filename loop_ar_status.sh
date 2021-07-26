@@ -12,7 +12,7 @@ function max_version ()
     while read A B C D E F G; do #while reading all the columns in the file
         if [ -z "${version_array[$A]}" ]; then
             version_array[$A]=$B;
-            echo init $A $B;
+            echo checking combination $A $B;
         else
             echo "${version_array[$A]} < $B";
             compare_version=$(echo "${version_array[$A]} < $B" |bc -l); #bc - working with floating numbers , use to avoid error
