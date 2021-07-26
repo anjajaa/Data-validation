@@ -37,6 +37,13 @@ function compare_version ()
 max_version < test1
 compare_version < test1 | sed 's" ";"g' | sed 's"~" "g' > res1
 
-awk -F';' 'NR==FNR{a[$1 FS $2]=$2 FS $3;next}{print $0";"a[$1 FS $2]}' res1 file_report | awk -F';' 'BEGIN{OFS=";"}{if($14 ~/^[[:alnum:]]/){$7=$14;print $0;}else{print $0}}' | cut -d ";" -f 1-12 > file_updated
+awk -F';' 'NR==FNR{a[$1 FS $2]=$2 FS $3;next}{print $0";"a[$1 FS $2]}' res1 file_report |
+awk -F';' 'BEGIN{OFS=";"}
+    {
+    if($14 ~/^[[:alnum:]]/)
+        {$7=$14;print $0;}
+    else
+        {print $0}
+    }' | cut -d ";" -f 1-12 > file_updated
 
 ```
