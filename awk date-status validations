@@ -18,7 +18,8 @@ rm $path_file/report
 
 #assumption that dates for replacement and their statuses don't match the rule defined above - needs to be checked and corrected
 #1.step - define multiple variables in awk for the dates
-``` 
+
+```bash
 cat $path_file/file | 
 awk -F';' -v sell_date="$sell__date" -v exp_1_date="$exp_1_date" -v exp_2_date="$exp_2_date" -v exp_3_date="$exp_3_date" -v exp_date="$exp_date" 'BEGIN{OFS=";"}
         {
