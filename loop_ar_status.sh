@@ -3,8 +3,9 @@
 #change value of one column based on the values in other two and the highest number in one.
 
 unset version_array; #in case there was already an array with the same name created, good to remove rules assigned to it
-declare -A version_array #create an asociative array
-#create function with name max
+declare -A version_array; #create an asociative array
+#create function
+
 function max_version ()
 {
     while read A B C D E F G; do #while reading all the columns in the file
