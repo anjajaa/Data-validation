@@ -15,9 +15,11 @@ cat $path_file/file_cur_data_val |
 
 rm $path_file/report
 
-cat $path_file/file |
+
 #assumption that dates for replacement and their statuses don't match the rule defined above - needs to be checked and corrected
 #1.step - define multiple variables in awk for the dates
+``` 
+cat $path_file/file | 
 awk -F';' -v sell_date="$sell__date" -v exp_1_date="$exp_1_date" -v exp_2_date="$exp_2_date" -v exp_3_date="$exp_3_date" -v exp_date="$exp_date" 'BEGIN{OFS=";"}
         {
         if ($3 <= exp_date && $2 ~/^'Exc'/){$2="Exception (expired)";print $0;}
@@ -38,6 +40,7 @@ awk -F';' 'BEGIN{OFS=";"}
         if ($3 == "Not available"){$7="Replacement date to be confirmed";print $0;}
         else{print $0}
         }' | awk -F';' 'BEGIN{OFS=";"}{print $5,$6,$1,$2,$3,$4,$7}'> $path_file/file_report
+ ```
 
 #there is a rule that if there are two items with different versions, then older ones should only be used as spare parts if needed, but not for new installations. But it was not reflected in the file properly because dates were not tracked, and most of them stayed as "Selling". Next task is to check on these and change them accordingly
 cat $path_file/file_report | egrep -i selling |  sed -e 's/ /~/g' | awk -F';' '{print $0}' |
