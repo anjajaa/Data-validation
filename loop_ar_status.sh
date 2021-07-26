@@ -34,7 +34,7 @@ function compare_version ()
     done
 }
 
-max_version < test1
+max_version < test1 > /dev/null 2>&1
 compare_version < test1 | sed 's" ";"g' | sed 's"~" "g' > res1
 
 awk -F';' 'NR==FNR{a[$1 FS $2]=$2 FS $3;next}{print $0";"a[$1 FS $2]}' res1 file_report |
