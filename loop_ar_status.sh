@@ -2,7 +2,7 @@
 
 #change value of one column based on the values in other two and the highest number in one.
 
-unset version_array; #in case there was already an array with the same name created, good to remove rules assigned to it
+unset version_array;
 declare -A version_array;
 
 function max_version ()
