@@ -4,7 +4,7 @@ path_file=/home/anna/data_check/file
 
 #There are two replacement dates columns, one is the original and second is new. Merging them both together as for the purpose of the excercise I need to only only the final date and not it's history
 rm $path_file/file
-cat $path_file/file_current | 
+cat $path_file/file_cur_data_val | 
   awk -F';' 'BEGIN{OFS=";"}
     {
     if($4=="Not available" || $4=="New_proposed_replacement_date")
