@@ -17,6 +17,10 @@ cat $path_file/file_cur_data_val |
 
 rm $path_file/report
 
+exp1_date=$(date -d "`date +%Y%m01` +18 month -1 day" +%Y-%m-%d)
+exp2_date=$(date -d "`date +%Y%m01` +12 month -1 day" +%Y-%m-%d)
+exp3_date=$(date -d "`date +%Y%m01` +6 month -1 day" +%Y-%m-%d)
+exp_date=$(date -d "`date +%Y%m01` +1 month" +%Y-%m-%d)
 
 #assumption that dates for replacement and their statuses don't match the rule defined above - needs to be checked and corrected
 #1.step - define multiple variables in awk for the dates
